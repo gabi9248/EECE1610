@@ -99,4 +99,15 @@ class Player {
         this.bullets.push(new PlayerBullet(this.x + 12, this.y));
     }
  
+ // player moving and shooting
+function keyPressed() {
+  if (keyCode === RIGHT_ARROW || keyCode == 88) {
+    player.moveRight();
+  } else if (keyCode === LEFT_ARROW || keyCode == 90) {
+    player.moveLeft();
+  } else if (keyCode === 32) {
+    player.shoot();
+  }
+}
+
 }
