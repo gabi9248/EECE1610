@@ -62,10 +62,7 @@ class Player {
         this.isMovingRight = true;
     }
  
-    shoot() {
-        this.bullets.push(new PlayerBullet(this.x + 12, this.y));
-    }
-    
+
 function keyPressed() {
   if (keyCode === RIGHT_ARROW || keyCode == 88) {
     player.moveRight();
