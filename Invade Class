@@ -64,4 +64,22 @@ class Invaders {
         }
  
     }
+    
+    checkCollision(x, y) {
+  for (let i = this.aliens.length - 1; i >= 0; i--) {
+      let currentAlien = this.aliens[i];
+      // the numbers are hard-coded for the width of the image
+      if (dist(x, y, currentAlien.x + 11.5, currentAlien.y + 8) < 10) {
+          this.aliens.splice(i, 1);
+          return true;
+      }
+  }
+  return false;
 }
+
+function mousePressed() {
+    invaders.checkCollision(mouseX, mouseY);
+}
+
+}
+
