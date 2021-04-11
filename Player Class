@@ -21,28 +21,7 @@ class Player {
  
         this.updateBullets();
     }
- 
-    updateBullets() {
-         
-        for (let i = this.bullets.length - 1; i >= 0; i--) {
-            this.bullets[i].update();
- 
-            if (this.hasHitAlien(this.bullets[i])) {
-                this.bullets.splice(i, 1);
-                break;
-            } else if (this.bullets[i].isOffScreen()) {
-                this.bullets.splice(i, 1);
-                break;
- 
-            }
-        }
-    }
- 
- 
-    hasHitAlien(bullet) {
-        return invaders.checkCollision(bullet.x, bullet.y);
-    }
- 
+  
  
     constrain() {
  
@@ -53,18 +32,6 @@ class Player {
         }
     }
  
-    draw() {
-        image(this.image, this.x, this.y, this.image.width / 20, this.image.height/20);
- 
-        this.drawBullets();
-    }
- 
- 
-    drawBullets() {
-        for (let bullet of this.bullets) {
-            bullet.draw();
-        }
-    }
  
  
     drawLives() {
@@ -98,8 +65,7 @@ class Player {
     shoot() {
         this.bullets.push(new PlayerBullet(this.x + 12, this.y));
     }
- 
- // player moving and shooting
+    
 function keyPressed() {
   if (keyCode === RIGHT_ARROW || keyCode == 88) {
     player.moveRight();
