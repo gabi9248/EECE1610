@@ -1,4 +1,4 @@
-package project;
+package project.EECE1610;
 
 import java.awt.Graphics;
 import java.util.LinkedList;

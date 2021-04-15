@@ -1,10 +1,12 @@
-package project;
+package project.EECE1610;
 
 //helps id all of the different objects
 
 public enum ID {
 
 	Player(),
-	Energy();
+	RenewableEnergy(),
+	NonrenewableEnergy(),
+	Health();
 	
 }

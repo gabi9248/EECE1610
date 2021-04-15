@@ -1,6 +1,7 @@
-package project;
+package project.EECE1610;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 //holds all of the different parts of the game
 
@@ -21,6 +22,7 @@ public abstract class Objects {
 	
 	public abstract void mark(); //going to use within different classes
 	public abstract void display(Graphics g);
+	public abstract Rectangle getBounds();
 	
 	//create access methods
 	public void xSet(int x) {

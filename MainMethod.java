@@ -1,4 +1,4 @@
-package project;
+package project.EECE1610;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -22,12 +22,12 @@ public class MainMethod extends Canvas implements Runnable{
 	private Header hud;
 	
 	//creates type state to show if the game is occurring
-	public enum STATE  {
+	public enum FRAME  {
 		Homepage,
 		Play;
 	}
 	
-	public STATE gameState = STATE.Homepage;
+	public FRAME gameState = FRAME.Homepage;
 	
 	public MainMethod() {
 		updater = new Updater();
@@ -101,10 +101,10 @@ public class MainMethod extends Canvas implements Runnable{
 	}
 
 	private void mark() {
-		if (gameState == STATE.Play) {
+		if (gameState == FRAME.Play) {
 			updater.mark();
 			hud.mark();
-		} else if (gameState == STATE.Homepage) {
+		} else if (gameState == FRAME.Homepage) {
 			homepage.mark();
 		}
 	}
@@ -119,10 +119,10 @@ public class MainMethod extends Canvas implements Runnable{
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
-		if(gameState == STATE.Play) {
+		if(gameState == FRAME.Play) {
 			updater.display(g);
 			hud.display(g);
-		} else if (gameState == STATE.Homepage) {
+		} else if (gameState == FRAME.Homepage) {
 			homepage.display(g);
 		}
 		

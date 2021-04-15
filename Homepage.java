@@ -1,4 +1,4 @@
-package project;
+package project.EECE1610;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,7 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 
-import project.MainMethod.STATE;
+import project.EECE1610.MainMethod.FRAME;
 
 public class Homepage extends MouseAdapter{
 	
@@ -27,7 +27,7 @@ public class Homepage extends MouseAdapter{
 		numGen = new Random();
 		
 		if(mouseOver(tempx, tempy, 210, 350, 200, 64)) {
-			game.gameState = STATE.Play;
+			game.gameState = FRAME.Play;
 			updater.addObjects(new Player(MainMethod.WIDTH/2-32,MainMethod.HEIGHT/2+170,ID.Player,updater));
 			
 			for(int i=0; i<10;i++){

@@ -1,4 +1,4 @@
-package project;
+package project.EECE1610;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
