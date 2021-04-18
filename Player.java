@@ -25,6 +25,7 @@ public class Player extends Objects {
 		x = MainMethod.boundry(x, 0, MainMethod.WIDTH - 53);
 		
 		collision();
+		changeScore();
 	}
 	
 	private void collision() {
@@ -34,10 +35,22 @@ public class Player extends Objects {
 			if(temp.idGet() == ID.NonrenewableEnergy) {
 				if(getBounds().intersects(temp.getBounds())) {
 					Header.HEALTH -= 1; 
-				}
+				}	
 			}
 		}
 		}
+	
+	private void changeScore() {
+		for(int i = 0;i<updater.object.size();i++) {
+			Objects temp = updater.object.get(i);
+			
+			if(temp.idGet() == ID.RenewableEnergy) {
+				if(getBounds().intersects(temp.getBounds())) {
+					Header.SCORE++;
+				}
+			}
+		}
+	}
 
 	public void display(Graphics g) {
 		g.setColor(Color.green);
