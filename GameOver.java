@@ -1,4 +1,4 @@
-package project;
+/*package project;
 
 import java.awt.Color; //importing stuff
 import java.awt.Dimension;
@@ -31,3 +31,4 @@ public class GameOver
 		}
 	}
 }
+*/

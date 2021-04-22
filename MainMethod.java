@@ -3,8 +3,17 @@ package project.EECE1610;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 public class MainMethod extends Canvas implements Runnable{
 	
@@ -108,16 +117,31 @@ public class MainMethod extends Canvas implements Runnable{
 			homepage.mark();
 		}
 	}
-	
+
 	private void display() {
+		
 		BufferStrategy buffer = this.getBufferStrategy();
 		if(buffer == null) {
 			this.createBufferStrategy(3);
 			return;
 		}
+		
 		Graphics g = buffer.getDrawGraphics();
+		
+		g = buffer.getDrawGraphics();
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
+		
+		/*
+		BufferedImage imgtest;
+		try {
+			imgtest = ImageIO.read(new File("C:/Users/Gabi/eclipse-workspace/EECE1610_Projects/EECE1610_Project/src/image/lightning.png"));
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		Image img = Toolkit.getDefaultToolkit().createImage("C:/Users/Gabi/eclipse-workspace/EECE1610_Projects/EECE1610_Project/src/image/lightning.png");
+		g.drawImage(img,0,0,this);
+		*/
 		
 		if(gameState == FRAME.Play) {
 			updater.display(g);

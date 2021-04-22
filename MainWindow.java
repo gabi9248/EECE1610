@@ -4,8 +4,9 @@ import java.awt.Canvas;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-public class MainWindow extends Canvas{
+public class MainWindow extends JPanel {
 	
 	private static final long serialVersionUID = 5786218614721191114L;
 
@@ -20,6 +21,7 @@ public class MainWindow extends Canvas{
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.add(method); //add class into the frame
+		//method.requestFocusInWindow();
 		frame.setVisible(true);
 		method.start(); //running start method
 	}
