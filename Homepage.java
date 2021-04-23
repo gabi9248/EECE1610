@@ -29,7 +29,7 @@ public class Homepage extends MouseAdapter{
 		if(mouseOver(tempx, tempy, 210, 350, 200, 64)) {
 			game.gameState = FRAME.Play;
 			updater.addObjects(new Player(MainMethod.WIDTH/2-32,MainMethod.HEIGHT/2+170,ID.Player,updater));
-			
+			/*
 			for(int i=0; i<10;i++){
 				updater.addObjects(new RenewableEnergy(numGen.nextInt(MainMethod.WIDTH),0,ID.RenewableEnergy));
 				}
@@ -37,6 +37,7 @@ public class Homepage extends MouseAdapter{
 			for(int j=0; j<10 ; j++) {
 				updater.addObjects(new NonrenewableEnergy(numGen.nextInt(MainMethod.WIDTH),0,ID.NonrenewableEnergy));
 			}
+			*/
 		}
 	}
 	

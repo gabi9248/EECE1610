@@ -29,6 +29,7 @@ public class MainMethod extends Canvas implements Runnable{
 	private Updater updater;
 	private Homepage homepage;
 	private Header hud;
+	private Levels levels;
 	
 	//creates type state to show if the game is occurring
 	public enum FRAME  {
@@ -45,10 +46,13 @@ public class MainMethod extends Canvas implements Runnable{
 		this.addMouseListener(homepage);
 		
 		hud = new Header();
+		levels = new Levels(updater, hud);
 		
 		new MainWindow(WIDTH, HEIGHT, "EECE 1610 Game", this);
 		
 		updater.addObjects(new Player(WIDTH/2-32,HEIGHT/2+170,ID.Player,updater));
+		
+		updater.addObjects(new RenewableEnergy(numGen.nextInt(WIDTH),0,ID.RenewableEnergy));
 		
 		/*
 		
@@ -113,6 +117,7 @@ public class MainMethod extends Canvas implements Runnable{
 		if (gameState == FRAME.Play) {
 			updater.mark();
 			hud.mark();
+			levels.mark();
 		} else if (gameState == FRAME.Homepage) {
 			homepage.mark();
 		}

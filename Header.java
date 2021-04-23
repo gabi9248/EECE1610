@@ -9,6 +9,8 @@ public class Header {
 	public static int HEALTH = 100;
 	public static int SCORE = 0;
 	
+	private int level = 1;
+	
 	public void mark() {
 		HEALTH = MainMethod.boundry(HEALTH,0,100);
 	}
