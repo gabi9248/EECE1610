@@ -26,6 +26,19 @@ public class Updater {
 		}
 	}	
 	
+	public void clear() {
+		for(int i=0;i<object.size();i++) {
+			Objects temp = object.get(i); 
+			
+			if(temp.idGet() == ID.Player) {
+				object.clear();
+				if(MainMethod.gameState != MainMethod.FRAME.End)
+				addObjects(new Player((int)temp.xGet(), (int)temp.yGet(),ID.Player,this));
+			}
+			
+		}
+	}
+	
 	//add objects to the list in the Updater class
 	public void addObjects(Objects object) {
 		this.object.add(object);

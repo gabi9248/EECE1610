@@ -34,18 +34,19 @@ public class MainMethod extends Canvas implements Runnable{
 	//creates type state to show if the game is occurring
 	public enum FRAME  {
 		Homepage,
-		Play;
+		Play,
+		End;
 	}
 	
-	public FRAME gameState = FRAME.Homepage;
+	public static FRAME gameState = FRAME.Homepage;
 	
 	public MainMethod() {
 		updater = new Updater();
-		homepage = new Homepage(this, updater);
+		hud = new Header();
+		homepage = new Homepage(this, updater, hud);
 		this.addKeyListener(new KeyBoard(updater));
 		this.addMouseListener(homepage);
-		
-		hud = new Header();
+	
 		levels = new Levels(updater, hud);
 		
 		new MainWindow(WIDTH, HEIGHT, "EECE 1610 Game", this);
@@ -118,9 +119,16 @@ public class MainMethod extends Canvas implements Runnable{
 			updater.mark();
 			hud.mark();
 			levels.mark();
-		} else if (gameState == FRAME.Homepage) {
+			
+			if(Header.HEALTH <= 0) {
+				Levels.level1 = 1;
+				gameState = FRAME.End;
+				updater.clear();
+			}
+			
+		} else if (gameState == FRAME.Homepage || gameState == FRAME.End) {
 			homepage.mark();
-		}
+		} 
 	}
 
 	private void display() {
@@ -151,7 +159,7 @@ public class MainMethod extends Canvas implements Runnable{
 		if(gameState == FRAME.Play) {
 			updater.display(g);
 			hud.display(g);
-		} else if (gameState == FRAME.Homepage) {
+		} else if (gameState == FRAME.Homepage || gameState == FRAME.End) {
 			homepage.display(g);
 		}
 		

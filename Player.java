@@ -34,7 +34,8 @@ public class Player extends Objects {
 			
 			if(temp.idGet() == ID.NonrenewableEnergy) {
 				if(getBounds().intersects(temp.getBounds())) {
-					Header.HEALTH -= 1; 
+					Header.HEALTH -= 1;
+					updater.removeObjects(new NonrenewableEnergy(x,y,ID.NonrenewableEnergy));
 				}	
 			}
 		}
@@ -47,6 +48,7 @@ public class Player extends Objects {
 			if(temp.idGet() == ID.RenewableEnergy) {
 				if(getBounds().intersects(temp.getBounds())) {
 					Header.SCORE++;
+					updater.removeObjects(new RenewableEnergy(x,y,ID.RenewableEnergy));
 				}
 			}
 		}

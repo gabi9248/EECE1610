@@ -26,7 +26,7 @@ public class Header {
 		Font fnt4 = new Font("arial", 1, 30);
 		g.setFont(fnt4);
 		g.setColor(Color.black);
-		g.drawString("Score: " + SCORE, 500, 30);
+		g.drawString("Score: " + SCORE, 450, 30);
 	}
 
 }

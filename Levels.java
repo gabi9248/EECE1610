@@ -8,7 +8,7 @@ public class Levels {
 	private Header hud;
 	private Random numGen = new Random();
 	
-	private int level1 = 1;
+	public static int level1 = 1;
 	private int level2 = 1;
 	
 	private int timerLevel1 = 0;
