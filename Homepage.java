@@ -29,7 +29,7 @@ public class Homepage extends MouseAdapter{
 		numGen = new Random();
 		
 		if(MainMethod.gameState == FRAME.Homepage) {
-			if(mouseOver(tempx, tempy, 210, 350, 200, 64)) {
+			if(mouseOver(tempx, tempy, 0, 0, 640, 640/12*9)) {
 				game.gameState = FRAME.Play;
 				updater.addObjects(new Player(MainMethod.WIDTH/2-32,MainMethod.HEIGHT/2+170,ID.Player,updater));
 			/*
@@ -78,38 +78,61 @@ public class Homepage extends MouseAdapter{
 	public void display(Graphics g) {
 		
 		if (MainMethod.gameState == FRAME.Homepage) {
-			Font fnt = new Font("arial", 1, 40);
-			Font fnt2 = new Font("arial", 1, 30);
-			Font fnt3 = new Font("arial", 1, 10);
+			Font fnt = new Font("serif", 1, 40);
+			Font fnt2 = new Font("serif", 1, 30);
 			
 			g.setFont(fnt);
 			g.setColor(Color.black);
-			g.drawString("Welcome to Energy Collector!", 40, 70);
+			g.drawString("Welcome to Energy Collector!", 50, 70);
 		
 			g.setFont(fnt2);
 			g.setColor(Color.black);
-			g.drawString("Start", 270, 390);
+			g.drawString("~ Click Anywhere Start ~", 150, 110);
+			
+			g.setColor(Color.DARK_GRAY);
+			g.fill3DRect(0, 300, 100, 200, false);
+			g.fill3DRect(105, 250, 100, 300, false);
+			g.fill3DRect(210, 320, 100, 130, false);
+			g.fill3DRect(315, 300, 100, 250, false);
+			g.fill3DRect(420, 220, 100, 400, false);
+			g.fill3DRect(525, 240, 100, 400, false);
+			
+			for(int i = 306; i<500; i+=20) {
+				for(int j = 5; j < 100; j+=20) {
+				g.setColor(Color.YELLOW);
+				g.fillRect(j, i, 10, 10);
+				}
+			}
+			
+			for(int i = 425; i<525; i+=20) {
+				g.fillRect(i, 225, 7, 212);
+			}
+			
+			for(int i = 325; i<500; i+=20) {
+				for(int j = 215; j < 300; j+=33) {
+				g.fillRect(j, i, 10, 15);
+				g.fillRect(j+15, i, 10, 15);
+				}
+			}
+			
+			for(int i = 112;i<200;i+=20) {
+				for(int j = 255; j<500;j+=50) {
+				g.fillRect(i, j, 5, 30);
+				}
+			}
+			
+			for(int i = 320;i<400;i+=20) {
+				for(int j = 310; j<500;j+=15) {
+				g.fillRect(i, j, 30, 2);
+				}
+			}
+			
+			for(int i = 530;i<625;i+=10) {
+				for(int j = 245;j<500;j += 15) {
+					g.fillRect(i, j, 4, 2);	
+				}
+			}
 		
-			g.setFont(fnt3);
-			g.setColor(Color.black);
-			g.drawString("Learn about renewable energy", 230, 190);
-		
-			g.setFont(fnt3);
-			g.setColor(Color.black);
-			g.drawString("Collect renewable energy", 230, 270);
-		
-			g.setFont(fnt3);
-			g.setColor(Color.black);
-			g.drawString("Avoid nonrenewable energy", 230, 280);
-		
-			g.setColor(Color.black);
-			g.drawRect(210, 150, 200, 64);
-		
-			g.setColor(Color.black);
-			g.drawRect(210, 250, 200, 64);
-		
-			g.setColor(Color.black);
-			g.drawRect(210, 350, 200, 64);
 		} else if (MainMethod.gameState == FRAME.End) {
 			Font fnt = new Font("arial", 1, 40);
 			Font fnt2 = new Font("arial", 1, 30);

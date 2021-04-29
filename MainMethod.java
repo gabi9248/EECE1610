@@ -34,6 +34,7 @@ public class MainMethod extends Canvas implements Runnable{
 	//creates type state to show if the game is occurring
 	public enum FRAME  {
 		Homepage,
+		Instructions,
 		Play,
 		End;
 	}
@@ -52,8 +53,6 @@ public class MainMethod extends Canvas implements Runnable{
 		new MainWindow(WIDTH, HEIGHT, "EECE 1610 Game", this);
 		
 		updater.addObjects(new Player(WIDTH/2-32,HEIGHT/2+170,ID.Player,updater));
-		
-		updater.addObjects(new RenewableEnergy(numGen.nextInt(WIDTH),0,ID.RenewableEnergy));
 		
 		/*
 		
