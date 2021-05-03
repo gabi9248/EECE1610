@@ -125,7 +125,7 @@ public class MainMethod extends Canvas implements Runnable{
 				updater.clear();
 			}
 			
-		} else if (gameState == FRAME.Homepage || gameState == FRAME.End) {
+		} else if (gameState == FRAME.Homepage || gameState == FRAME.End || gameState == FRAME.Instructions) {
 			homepage.mark();
 		} 
 	}
@@ -158,7 +158,7 @@ public class MainMethod extends Canvas implements Runnable{
 		if(gameState == FRAME.Play) {
 			updater.display(g);
 			hud.display(g);
-		} else if (gameState == FRAME.Homepage || gameState == FRAME.End) {
+		} else if (gameState == FRAME.Homepage || gameState == FRAME.End || gameState == FRAME.Instructions) {
 			homepage.display(g);
 		}
 		
