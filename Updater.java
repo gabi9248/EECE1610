@@ -1,5 +1,6 @@
 package project.EECE1610;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.LinkedList;
 

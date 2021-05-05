@@ -5,17 +5,25 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
 import javax.swing.ImageIcon;
 
-public class RenewableEnergy extends Objects {
+public class RenewableEnergy extends Objects{
 
+	Updater updater;
+	private BufferedImage renewable_image;
+	
 	public RenewableEnergy(int x, int y, ID id) {
 		super(x, y, id);
 
 		xvel = 0;
 		yvel = 1;
+		
+		imageSprites ss = new imageSprites(MainMethod.spriteSheet2);
+		
+		renewable_image = ss.grabImage(1, 1, 15, 15);
 		
 	}
 	
@@ -33,16 +41,11 @@ public class RenewableEnergy extends Objects {
 	}
 
 	public void display(Graphics g) {
+
+		g.drawImage(renewable_image, x, y, null);
 		
-		//Image img = Toolkit.getDefaultToolkit().createImage("/Users/Gabi/eclipse-workspace/EECE1610_Projects/EECE1610_Project/src/image/lightning.png");
-		//g.drawImage(img,0,0,null);
-		//figure out what an image observer is
-		
-		//Image img = new ImageIcon("images/lightning.png").getImage();
-		//g.drawImage(img,0,0,null);
-		
-		g.setColor(Color.yellow);
-		g.fillRect(x, y, 10, 10);
+		//g.setColor(Color.yellow);
+		//g.fillRect(x, y, 10, 10);
 		
 		
 	}

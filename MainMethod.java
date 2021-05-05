@@ -41,6 +41,9 @@ public class MainMethod extends Canvas implements Runnable{
 	
 	public static FRAME gameState = FRAME.Homepage;
 	
+	public static BufferedImage spriteSheet;
+	public static BufferedImage spriteSheet2;
+	
 	public MainMethod() {
 		updater = new Updater();
 		hud = new Header();
@@ -51,6 +54,11 @@ public class MainMethod extends Canvas implements Runnable{
 		levels = new Levels(updater, hud);
 		
 		new MainWindow(WIDTH, HEIGHT, "EECE 1610 Game", this);
+		
+		BufferImageLoader loader = new BufferImageLoader();
+		
+		spriteSheet = loader.loadImage("/image/testspritesheet.png");
+		spriteSheet2 = loader.loadImage("/image/testspritesheet2.png");
 		
 		updater.addObjects(new Player(WIDTH/2-32,HEIGHT/2+170,ID.Player,updater));
 		

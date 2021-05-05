@@ -4,14 +4,21 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
-public class Player extends Objects {
+public class Player extends Objects{
 	
 	Updater updater;
+	private BufferedImage player_image;
 
 	public Player(int x, int y, ID id, Updater updater) {
 		super(x, y, id);
 		this.updater = updater;
+		
+		imageSprites ss = new imageSprites(MainMethod.spriteSheet);
+		
+		player_image = ss.grabImage(1, 1, 15, 15);
+		
 	}
 	
 	public Rectangle getBounds() {
@@ -34,9 +41,7 @@ public class Player extends Objects {
 			
 			if(temp.idGet() == ID.NonrenewableEnergy) {
 				if(getBounds().intersects(temp.getBounds())) {
-					//updater.clear();
 					Header.HEALTH -= 1;
-					
 				}	
 			}
 		}
@@ -49,15 +54,17 @@ public class Player extends Objects {
 			if(temp.idGet() == ID.RenewableEnergy) {
 				if(getBounds().intersects(temp.getBounds())) {
 					Header.SCORE++;
-					updater.removeObjects(new RenewableEnergy(x,y,ID.RenewableEnergy));
 				}
 			}
 		}
 	}
 
 	public void display(Graphics g) {
-		g.setColor(Color.green);
-		g.fillRect(x, y, 32, 32);
+		
+		g.drawImage(player_image, x, y, null);
+		
+		//g.setColor(Color.green);
+		//g.fillRect(x, y, 32, 32);
 	}
 
 }
