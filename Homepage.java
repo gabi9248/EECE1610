@@ -56,6 +56,7 @@ public class Homepage extends MouseAdapter{
 				updater.addObjects(new Player(MainMethod.WIDTH/2-32,MainMethod.HEIGHT/2+170,ID.Player,updater));
 				updater.clear();
 				Header.HEALTH = 100;
+				Header.LEVEL = 1;
 				Header.SCORE = 0;
 			}
 		}

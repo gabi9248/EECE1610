@@ -8,6 +8,7 @@ public class Header {
 	
 	public static int HEALTH = 100;
 	public static int SCORE = 0;
+	public static int LEVEL = 1;
 	
 	private int level = 1;
 	
@@ -23,10 +24,14 @@ public class Header {
 		g.setColor(Color.white);
 		g.drawRect(15,15,200,32);
 		
-		Font fnt4 = new Font("arial", 1, 30);
-		g.setFont(fnt4);
+		Font fnt = new Font("serif", 1, 25);
+		g.setFont(fnt);
 		g.setColor(Color.black);
-		g.drawString("Score: " + SCORE, 450, 30);
+		g.drawString("Score: " + SCORE, 500, 40);
+		
+		Font fnt1 = new Font("serif", 1, 20);
+		g.setFont(fnt1);
+		g.drawString("Level: " + LEVEL, 515, 63);
 	}
 
 }

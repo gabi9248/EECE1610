@@ -120,7 +120,7 @@ public class MainMethod extends Canvas implements Runnable{
 			levels.mark();
 			
 			if(Header.HEALTH <= 0) {
-				Levels.level1 = 1;
+				Levels.level = 1;
 				gameState = FRAME.End;
 				updater.clear();
 			}
