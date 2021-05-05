@@ -5,7 +5,8 @@ package project.EECE1610;
 public enum ID {
 
 	Player(),
-	RenewableEnergy(),
+	SolarEnergy(),
+	WindEnergy(),
 	NonrenewableEnergy(),
 	Health();
 	

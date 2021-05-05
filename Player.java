@@ -15,24 +15,24 @@ public class Player extends Objects{
 		super(x, y, id);
 		this.updater = updater;
 		
-		imageSprites ss = new imageSprites(MainMethod.spriteSheet);
-		
-		player_image = ss.grabImage(1, 1, 15, 15);
+		imageSprites ss = new imageSprites(MainMethod.outlet);
+		player_image = ss.grabImage(1, 1, 64, 64);
 		
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(x,y,16,16);
+		return new Rectangle(x,y,32,32);
 	}
 
 	public void mark() {
 		x += xvel;
 		y += yvel;
 		
-		x = MainMethod.boundry(x, 0, MainMethod.WIDTH - 53);
+		x = MainMethod.boundry(x, -10, MainMethod.WIDTH - 65);
 		
 		collision();
-		changeScore();
+		changeScoreSolar();
+		changeScoreWind();
 	}
 	
 	private void collision() {
@@ -47,11 +47,23 @@ public class Player extends Objects{
 		}
 		}
 	
-	private void changeScore() {
+	private void changeScoreSolar() {
 		for(int i = 0;i<updater.object.size();i++) {
 			Objects temp = updater.object.get(i);
 			
-			if(temp.idGet() == ID.RenewableEnergy) {
+			if(temp.idGet() == ID.SolarEnergy) {
+				if(getBounds().intersects(temp.getBounds())) {
+					Header.SCORE++;
+				}
+			}
+		}
+	}
+	
+	private void changeScoreWind() {
+		for(int i = 0;i<updater.object.size();i++) {
+			Objects temp = updater.object.get(i);
+			
+			if(temp.idGet() == ID.WindEnergy) {
 				if(getBounds().intersects(temp.getBounds())) {
 					Header.SCORE++;
 				}

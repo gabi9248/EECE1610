@@ -12,14 +12,14 @@ public class NonrenewableEnergy extends Objects {
 	public NonrenewableEnergy(int x, int y, ID id) {
 		super(x, y, id);
 		
-		imageSprites ss = new imageSprites(MainMethod.spriteSheet);
+		imageSprites ss = new imageSprites(MainMethod.nonrenewable);
 		
-		nonrenewable_image = ss.grabImage(1, 1, 45, 15);
+		nonrenewable_image = ss.grabImage(1, 1, 32, 32);
 		
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(x,y,10,10);
+		return new Rectangle(x,y,32,32);
 	}
 
 	public void mark() {

@@ -41,8 +41,11 @@ public class MainMethod extends Canvas implements Runnable{
 	
 	public static FRAME gameState = FRAME.Homepage;
 	
-	public static BufferedImage spriteSheet;
-	public static BufferedImage spriteSheet2;
+	public static BufferedImage solar;
+	public static BufferedImage wind;
+	public static BufferedImage nonrenewable;
+	public static BufferedImage outlet;
+	public static BufferedImage background;
 	
 	public MainMethod() {
 		updater = new Updater();
@@ -57,10 +60,11 @@ public class MainMethod extends Canvas implements Runnable{
 		
 		BufferImageLoader loader = new BufferImageLoader();
 		
-		spriteSheet = loader.loadImage("/image/testspritesheet.png");
-		spriteSheet2 = loader.loadImage("/image/testspritesheet2.png");
-		
-		updater.addObjects(new Player(WIDTH/2-32,HEIGHT/2+170,ID.Player,updater));
+		outlet = loader.loadImage("/image/outlet.png");
+		solar = loader.loadImage("/image/solar.png");
+		wind = loader.loadImage("/image/wind.png");
+		nonrenewable = loader.loadImage("/image/fossilfuel.png");
+		background = loader.loadImage("/image/background.png");
 		
 		/*
 		
@@ -149,19 +153,8 @@ public class MainMethod extends Canvas implements Runnable{
 		Graphics g = buffer.getDrawGraphics();
 		
 		g = buffer.getDrawGraphics();
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
-		/*
-		BufferedImage imgtest;
-		try {
-			imgtest = ImageIO.read(new File("C:/Users/Gabi/eclipse-workspace/EECE1610_Projects/EECE1610_Project/src/image/lightning.png"));
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
-		Image img = Toolkit.getDefaultToolkit().createImage("C:/Users/Gabi/eclipse-workspace/EECE1610_Projects/EECE1610_Project/src/image/lightning.png");
-		g.drawImage(img,0,0,this);
-		*/
+		g.drawImage(background, 0, 0, this);
 		
 		if(gameState == FRAME.Play) {
 			updater.display(g);

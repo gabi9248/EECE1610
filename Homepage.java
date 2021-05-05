@@ -46,14 +46,14 @@ public class Homepage extends MouseAdapter{
 		if(MainMethod.gameState == FRAME.Instructions) {
 			if(mouseOver(tempx, tempy, 212, 175, 200, 40)) {
 				game.gameState = FRAME.Play;
-				updater.addObjects(new Player(MainMethod.WIDTH/2-32,MainMethod.HEIGHT/2+170,ID.Player,updater));
+				updater.addObjects(new Player(290,385,ID.Player,updater));
 			}
 		}
 		
 		if(MainMethod.gameState == FRAME.End) {
 			if(mouseOver(tempx,tempy,303, 166, 60, 20)) {
 				MainMethod.gameState = FRAME.Play;
-				updater.addObjects(new Player(MainMethod.WIDTH/2-32,MainMethod.HEIGHT/2+170,ID.Player,updater));
+				updater.addObjects(new Player(290,385,ID.Player,updater));
 				updater.clear();
 				Header.HEALTH = 100;
 				Header.LEVEL = 1;
@@ -104,6 +104,8 @@ public class Homepage extends MouseAdapter{
 			g.fill3DRect(315, 300, 100, 250, false);
 			g.fill3DRect(420, 220, 100, 400, false);
 			g.fill3DRect(525, 240, 100, 400, false);
+			
+			g.setColor(Color.WHITE);
 			
 			for(int i = 306; i<500; i+=20) {
 				for(int j = 5; j < 100; j+=20) {
