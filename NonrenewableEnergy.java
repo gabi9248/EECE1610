@@ -40,7 +40,7 @@ public class NonrenewableEnergy extends Objects {
 			
 			if(temp.idGet() == ID.Player) {
 				if(getBounds().intersects(temp.getBounds())) {
-					Header.HEALTH--;
+					Header.HEALTH -= 10;
 					this.xSet(0);
 					this.ySet(500);
 				}	

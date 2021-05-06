@@ -29,7 +29,7 @@ public class Homepage extends MouseAdapter{
 		numGen = new Random();
 		
 		if(MainMethod.gameState == FRAME.Homepage) {
-			if(mouseOver(tempx, tempy, 175, 90, 280, 40)) {
+			if(mouseOver(tempx, tempy, 170, 85, 291, 50)) {
 				game.gameState = FRAME.Instructions;
 		}
 		}
@@ -50,6 +50,11 @@ public class Homepage extends MouseAdapter{
 				Header.LEVEL = 1;
 				Header.SCORE = 0;
 			}
+			
+			if(mouseOver(tempx,tempy, 275, 205, 115, 20)) {
+				System.exit(1);
+			}
+			
 			
 		}
 	}
@@ -89,7 +94,7 @@ public class Homepage extends MouseAdapter{
 			g.setColor(Color.black);
 			g.drawString("Click Here to Start", 190, 120);
 			g.drawRect(175, 90, 280, 40);
-			g.drawRect(170, 85, 292, 50);
+			g.drawRect(170, 85, 291, 50);
 			
 			g.setColor(Color.DARK_GRAY);
 			g.fill3DRect(0, 300, 100, 200, false);
@@ -145,18 +150,18 @@ public class Homepage extends MouseAdapter{
 				
 				g.setFont(fnt);
 				g.setColor(Color.black);
-				g.drawString("Renewable is an environmentally-friendly alternative", 100,50);
-				g.drawString(" to nonrenewable energy and will power energy for the future!", 60, 75);
+				g.drawString("Renewable is an environmental-friendly alternative", 110,50);
+				g.drawString(" to nonrenewable energy and will provide energy for the future!", 55, 75);
 				
 				g.setFont(fnt1);
-				g.drawString("Light up your city by collecting as much renewable energy as you can", 100, 110);
-				g.drawString("Move the outlet using the right and left arrow keys to wind and solar energy", 85, 130);
+				g.drawString("Light up your city by collecting as much power as you can", 140, 110);
+				g.drawString("Move your outlet using the right and left arrow keys to collect wind and solar energy", 65, 130);
 				g.drawString("Be sure to avoid fossil fuels so that your health does not go down", 120, 150);
 				
-				g.drawString("Press here to continue", 240, 190);
+				g.drawString("Press here to continue", 240, 200);
 			
-				g.drawRect(222, 170, 175, 30);
-				g.drawRect(215, 165, 188, 40);
+				g.drawRect(222, 180, 175, 30);
+				g.drawRect(215, 175, 188, 40);
 				
 				g.setColor(Color.DARK_GRAY);
 				g.fill3DRect(0, 300, 100, 200, false);
@@ -214,7 +219,7 @@ public class Homepage extends MouseAdapter{
 				g.drawString("Game Over", 235, 70);
 			
 				g.setFont(fnt2);
-				g.drawString("Score: " + Header.SCORE, 270, 110);
+				g.drawString("You collected " + Header.SCORE + " watts!", 200, 110);
 				
 				g.setFont(fnt3);
 				if (Header.SCORE >= 0 && Header.SCORE <= 10) {
@@ -228,9 +233,13 @@ public class Homepage extends MouseAdapter{
 				}
 				
 				g.setFont(fnt4);
-				g.drawRect(285, 166, 115, 20);
-				g.drawRect(280, 161, 125, 30);
-				g.drawString("Click Here to Play Again",290 ,180);
+				g.drawRect(275, 166, 115, 20);
+				g.drawRect(270, 161, 125, 30);
+				g.drawString("Click Here to Play Again",280 ,180);
+				
+				g.drawRect(275, 205, 115, 20);
+				g.drawRect(270, 200, 125, 30);
+				g.drawString("Click Here to Quit", 293, 218);
 				
 				g.setColor(Color.DARK_GRAY);
 				g.fill3DRect(0, 300, 100, 200, false);
