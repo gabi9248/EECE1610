@@ -29,17 +29,8 @@ public class Homepage extends MouseAdapter{
 		numGen = new Random();
 		
 		if(MainMethod.gameState == FRAME.Homepage) {
-			if(mouseOver(tempx, tempy, 0, 0, 640, 640/12*9)) {
+			if(mouseOver(tempx, tempy, 175, 90, 280, 40)) {
 				game.gameState = FRAME.Instructions;
-			/*
-			for(int i=0; i<10;i++){
-				updater.addObjects(new RenewableEnergy(numGen.nextInt(MainMethod.WIDTH),0,ID.RenewableEnergy));
-				}
-			
-			for(int j=0; j<10 ; j++) {
-				updater.addObjects(new NonrenewableEnergy(numGen.nextInt(MainMethod.WIDTH),0,ID.NonrenewableEnergy));
-			}
-			*/
 		}
 		}
 		
@@ -51,7 +42,7 @@ public class Homepage extends MouseAdapter{
 		}
 		
 		if(MainMethod.gameState == FRAME.End) {
-			if(mouseOver(tempx,tempy,303, 166, 60, 20)) {
+			if(mouseOver(tempx,tempy,285, 166, 115, 20)) {
 				MainMethod.gameState = FRAME.Play;
 				updater.addObjects(new Player(290,385,ID.Player,updater));
 				updater.clear();
@@ -59,6 +50,7 @@ public class Homepage extends MouseAdapter{
 				Header.LEVEL = 1;
 				Header.SCORE = 0;
 			}
+			
 		}
 	}
 	
@@ -95,7 +87,9 @@ public class Homepage extends MouseAdapter{
 		
 			g.setFont(fnt2);
 			g.setColor(Color.black);
-			g.drawString("~ Click Anywhere Start ~", 150, 110);
+			g.drawString("Click Here to Start", 190, 120);
+			g.drawRect(175, 90, 280, 40);
+			g.drawRect(170, 85, 292, 50);
 			
 			g.setColor(Color.DARK_GRAY);
 			g.fill3DRect(0, 300, 100, 200, false);
@@ -151,16 +145,18 @@ public class Homepage extends MouseAdapter{
 				
 				g.setFont(fnt);
 				g.setColor(Color.black);
-				g.drawString("Light up your city by collecting as much", 140, 70);
-				g.drawString("renewable energy as you can!", 190, 100);
-				g.drawString("Be sure to avoid nonrenewable energy", 140, 130);
-				g.drawString("so that your health does not go down!", 150,160);
+				g.drawString("Renewable is an environmentally-friendly alternative", 100,50);
+				g.drawString(" to nonrenewable energy and will power energy for the future!", 60, 75);
 				
 				g.setFont(fnt1);
-				g.drawString("Press here to continue", 240, 200);
+				g.drawString("Light up your city by collecting as much renewable energy as you can", 100, 110);
+				g.drawString("Move the outlet using the right and left arrow keys to wind and solar energy", 85, 130);
+				g.drawString("Be sure to avoid fossil fuels so that your health does not go down", 120, 150);
 				
-				g.setColor(Color.LIGHT_GRAY);
-				g.drawRect(212, 175, 200, 40);
+				g.drawString("Press here to continue", 240, 190);
+			
+				g.drawRect(222, 170, 175, 30);
+				g.drawRect(215, 165, 188, 40);
 				
 				g.setColor(Color.DARK_GRAY);
 				g.fill3DRect(0, 300, 100, 200, false);
@@ -221,19 +217,20 @@ public class Homepage extends MouseAdapter{
 				g.drawString("Score: " + Header.SCORE, 270, 110);
 				
 				g.setFont(fnt3);
-				if (Header.SCORE >= 0 && Header.SCORE <= 200) {
-					g.drawString("Barely lit up your city", 240, 142);
-				} else if (Header.SCORE >= 200 && Header.SCORE <= 500) {
-					g.drawString("Good job! Keep going!", 240, 142);
-				} else if (Header.SCORE >= 500 && Header.SCORE <= 1000) {
-					g.drawString("Yay", 240, 142);
+				if (Header.SCORE >= 0 && Header.SCORE <= 10) {
+					g.drawString("Keep going to provide more power!", 190, 142);
+				} else if (Header.SCORE >= 25 && Header.SCORE <= 50) {
+					g.drawString("Nice job! You're city is almost lit!", 200, 142);
+				} else if (Header.SCORE >= 50 && Header.SCORE <= 75) {
+					g.drawString("Almost there! Play again to collect more power!", 150, 142);
 				} else {
-					g.drawString("Congradulations! You lit up your city!!", 240, 142);
+					g.drawString("Congratulations! You lit up your city!!", 180, 142);
 				}
 				
 				g.setFont(fnt4);
-				g.drawRect(303, 166, 60, 20);
-				g.drawString("Try Again",311 ,180);
+				g.drawRect(285, 166, 115, 20);
+				g.drawRect(280, 161, 125, 30);
+				g.drawString("Click Here to Play Again",290 ,180);
 				
 				g.setColor(Color.DARK_GRAY);
 				g.fill3DRect(0, 300, 100, 200, false);

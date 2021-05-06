@@ -9,8 +9,9 @@ public class SolarEnergy extends Objects{
 	Updater updater;
 	private BufferedImage solar_image;
 	
-	public SolarEnergy(int x, int y, ID id) {
+	public SolarEnergy(int x, int y, ID id, Updater updater) {
 		super(x, y, id);
+		this.updater = updater;
 		imageSprites ss = new imageSprites(MainMethod.solar);
 		solar_image = ss.grabImage(1, 1, 32, 32);
 
@@ -23,6 +24,22 @@ public class SolarEnergy extends Objects{
 		if(y == 0) {
 			yvel = 1;
 		}
+		
+		collide();
+	}
+	
+	private void collide() {
+		for(int i = 0;i<updater.object.size();i++) {
+			Objects temp = updater.object.get(i);
+			
+			if(temp.idGet() == ID.Player) {
+				if(getBounds().intersects(temp.getBounds())) {
+					Header.SCORE++;
+					this.xSet(0);
+					this.ySet(500);
+				}	
+			}
+		}
 	}
 
 	public void display(Graphics g) {
@@ -31,7 +48,7 @@ public class SolarEnergy extends Objects{
 
 	
 	public Rectangle getBounds() {
-		return new Rectangle(x,y,32,32);
+		return new Rectangle(x,y,16,16);
 	}
 
 }

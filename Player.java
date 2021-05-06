@@ -29,46 +29,6 @@ public class Player extends Objects{
 		y += yvel;
 		
 		x = MainMethod.boundry(x, -10, MainMethod.WIDTH - 65);
-		
-		collision();
-		changeScoreSolar();
-		changeScoreWind();
-	}
-	
-	private void collision() {
-		for(int i = 0;i<updater.object.size();i++) {
-			Objects temp = updater.object.get(i);
-			
-			if(temp.idGet() == ID.NonrenewableEnergy) {
-				if(getBounds().intersects(temp.getBounds())) {
-					Header.HEALTH -= 1;
-				}	
-			}
-		}
-		}
-	
-	private void changeScoreSolar() {
-		for(int i = 0;i<updater.object.size();i++) {
-			Objects temp = updater.object.get(i);
-			
-			if(temp.idGet() == ID.SolarEnergy) {
-				if(getBounds().intersects(temp.getBounds())) {
-					Header.SCORE++;
-				}
-			}
-		}
-	}
-	
-	private void changeScoreWind() {
-		for(int i = 0;i<updater.object.size();i++) {
-			Objects temp = updater.object.get(i);
-			
-			if(temp.idGet() == ID.WindEnergy) {
-				if(getBounds().intersects(temp.getBounds())) {
-					Header.SCORE++;
-				}
-			}
-		}
 	}
 
 	public void display(Graphics g) {
