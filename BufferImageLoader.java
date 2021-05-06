@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+//class loads images into the game usign a method
 public class BufferImageLoader {
 	
 	BufferedImage image;

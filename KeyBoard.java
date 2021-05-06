@@ -3,6 +3,7 @@ package project.EECE1610;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+//method that allows player to move using the right and left arrow keys
 public class KeyBoard extends KeyAdapter{
 	
 	private Updater updater;
@@ -36,6 +37,7 @@ public class KeyBoard extends KeyAdapter{
 		for(int i = 0; i< updater.object.size();i++) {
 			Objects temp = updater.object.get(i);
 			
+			//if player is detected, the left and right arrow keys are used to move the objects
 			if(temp.idGet() == ID.Player) {
 				if(key == KeyEvent.VK_RIGHT) {
 					temp.xVelSet(0);

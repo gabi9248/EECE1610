@@ -2,12 +2,14 @@ package project.EECE1610;
 
 import java.util.Random;
 
+//class that create different levels
 public class Levels {
 	
 	private Updater updater;
 	private Header hud;
 	private Random numGen = new Random();
 	
+	//declares and initializes integers
 	public static int level = 1;
 	private int timer = 0;
 	private int width = 640;
@@ -18,14 +20,16 @@ public class Levels {
 	}
 	
 	public void mark() {
-		
-		//first level
+
+		//increments by one
 		timer++;
 		
+		//if timer reaches a specific value, then the timer resets and the level is incremented
 		if(timer >= 50) {
 			timer = 0;
 			level++;
 			
+			//adds objects as levels are incremented
 			//level 1
 			if(level == 2) {
 				updater.addObjects(new SolarEnergy(numGen.nextInt(width/2),0,ID.SolarEnergy,updater));

@@ -13,25 +13,33 @@ public class Updater {
 	LinkedList<Objects> object = new LinkedList<Objects>();
 	
 	public void mark() {
+		//will loop through all of the objects
 		for(int i =0;i<object.size();i++) {
-			//will loop through all of the objects
-			Objects temp = object.get(i); //allows to get id of objects
+			//obtain id of the objects
+			Objects temp = object.get(i);
+			//update the temporary object
 			temp.mark();
 		}
 			
 	}
 	public void display(Graphics g) {
+		//will loop through all of the objects
 		for(int i =0;i<object.size();i++) {
+			//obtain id of the objects
 			Objects temp = object.get(i);
+			//update the temporary object
 			temp.display(g);
 		}
 	}	
 	
+	//clears the objects from the screen
 	public void clear() {
 		for(int i=0;i<object.size();i++) {
 			Objects temp = object.get(i); 
 			
 			if(temp.idGet() == ID.Player) {
+				//use LinkedList method to clear objects from the screen
+				//method removes objects from the list
 				object.clear();
 				if(MainMethod.gameState != MainMethod.FRAME.End)
 				addObjects(new Player((int)temp.xGet(), (int)temp.yGet(),ID.Player,this));

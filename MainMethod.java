@@ -19,19 +19,25 @@ public class MainMethod extends Canvas implements Runnable{
 	
 	private static final long serialVersionUID = -605775028508762336L;
 
+	//width and height of frame
 	public static final int WIDTH = 640;
 	public static final int HEIGHT = WIDTH/12 * 9;
 	
-	private Thread thread; //how game will run - single threaded
+	//how game will run - single threaded
+	private Thread thread; 
+	
+	//make sure that game is running
 	private boolean going = false;
+	
 	private Random numGen;
 	
+	//create instances from other classes
 	private Updater updater;
 	private Homepage homepage;
 	private Header hud;
 	private Levels levels;
 	
-	//creates type state to show if the game is occurring
+	//states of games to switch between frames
 	public enum FRAME  {
 		Homepage,
 		Instructions,
@@ -39,55 +45,56 @@ public class MainMethod extends Canvas implements Runnable{
 		End;
 	}
 	
+	//what state the game should start off in
 	public static FRAME gameState = FRAME.Homepage;
 	
+	//declares images to be used in the game
 	public static BufferedImage solar;
 	public static BufferedImage wind;
 	public static BufferedImage nonrenewable;
 	public static BufferedImage outlet;
 	public static BufferedImage background;
 	
+	//constructor method
 	public MainMethod() {
+		
+		//initialize instance of classes
 		updater = new Updater();
 		hud = new Header();
+		
+		//create instance of class that allows for switching between frames
 		homepage = new Homepage(this, updater, hud);
+		
+		//add listeners that allows for user interface
 		this.addKeyListener(new KeyBoard(updater));
 		this.addMouseListener(homepage);
 	
+		//create instance of class that makes the different levels
 		levels = new Levels(updater, hud);
 		
+		//create the window for the game
+		//create instance of class that has frame details
 		new MainWindow(WIDTH, HEIGHT, "EECE 1610 Game", this);
 		
 		BufferImageLoader loader = new BufferImageLoader();
 		
+		//initialize images to their path
 		outlet = loader.loadImage("/image/outlet.png");
 		solar = loader.loadImage("/image/solar.png");
 		wind = loader.loadImage("/image/wind.png");
 		nonrenewable = loader.loadImage("/image/fossilfuel.png");
 		background = loader.loadImage("/image/background.png");
-		
-		/*
-		
-		numGen = new Random();
-		
-		for(int i=0; i<10;i++){
-			updater.addObjects(new RenewableEnergy(numGen.nextInt(WIDTH),0,ID.RenewableEnergy));
-			}
-		
-		for(int j=0; j<10 ; j++) {
-			updater.addObjects(new NonrenewableEnergy(numGen.nextInt(WIDTH),0,ID.NonrenewableEnergy));
-			
-		}
-		
-		*/
+
 	}
 	
+	//start the game
 	public synchronized void start() {
 		thread = new Thread(this);
 		thread.start();
 		going = true;
 	}
 	
+	//end the game
 	public synchronized void stop() {
 		try {
 			thread.join();
@@ -97,7 +104,8 @@ public class MainMethod extends Canvas implements Runnable{
 		}
 	}
 	
-	public void run() { //game loop
+	//game loop - utilizes timer so that game is able to run
+	public void run() {
 		this.requestFocus();
 		long lastTime = System.nanoTime();
 		double amountOfTicks = 60.0;
@@ -125,6 +133,7 @@ public class MainMethod extends Canvas implements Runnable{
 		stop();
 	}
 
+	//method that allows for game to change and values to update
 	private void mark() {
 		if (gameState == FRAME.Play) {
 			updater.mark();
@@ -142,6 +151,7 @@ public class MainMethod extends Canvas implements Runnable{
 		} 
 	}
 
+	//method that allows for game to change graphics
 	private void display() {
 		
 		BufferStrategy buffer = this.getBufferStrategy();
@@ -167,8 +177,8 @@ public class MainMethod extends Canvas implements Runnable{
 		buffer.show();
 	}
 	
+	//defines borders for the objects so that they do not go out of the frame
 	public static int boundry(int val, int min, int max) {
-		//defines borders for the objects so that they do not go out of the frame
 		if (val >= max) {
 			return val = max;
 		} else if(val <= min) {
@@ -178,6 +188,8 @@ public class MainMethod extends Canvas implements Runnable{
 		}
 	}
 	
+	//main method
+	//create instance of game - allows for playing
 	public static void main(String[] args) {
 		new MainMethod();
 	}

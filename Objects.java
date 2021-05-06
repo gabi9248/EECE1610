@@ -4,23 +4,28 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 //holds all of the different parts of the game
+//super class that can be extended and used throughout the game
 
 public abstract class Objects {
 
-	protected int x; //can only be accessed by which object inherits the game object
-	protected int y; //overlaps into the player objects
+	//because variables are protected, they can only be accessed by which object inherits the game object
+	//overlaps into the player objects
+	protected int x; 
+	protected int y;
 	
 	protected ID id;
 	protected int xvel;
 	protected int yvel;
 	
+	//constructor method
 	public Objects(int x, int y, ID id) {
 		this.x = x;
 		this.y = y;
 		this.id = id;
 	}
 	
-	public abstract void mark(); //going to use within different classes
+	//going to use within different classes
+	public abstract void mark(); 
 	public abstract void display(Graphics g);
 	public abstract Rectangle getBounds();
 	

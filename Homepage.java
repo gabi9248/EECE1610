@@ -9,6 +9,7 @@ import java.util.Random;
 
 import project.EECE1610.MainMethod.FRAME;
 
+//class that contains the different frames
 public class Homepage extends MouseAdapter{
 	
 	private MainMethod game;
@@ -16,41 +17,58 @@ public class Homepage extends MouseAdapter{
 	private Random numGen;
 	private Header hud;
 	
+	//constructor method
 	public Homepage(MainMethod game, Updater updater, Header hud) {
 		this.game = game;
 		this.updater = updater;
 		this.hud = hud;
 	}
 	
+	//method for what happens if mouse is clicked in different frames
 	public void mousePressed(MouseEvent e) {
+		//temporary x and y variables - determines coordinates
 		int tempx = e.getX();
 		int tempy = e.getY();
 		
 		numGen = new Random();
 		
+		//game state is in the homepage
+		//transitions from the homepage to the instructions page
 		if(MainMethod.gameState == FRAME.Homepage) {
 			if(mouseOver(tempx, tempy, 170, 85, 291, 50)) {
 				game.gameState = FRAME.Instructions;
-		}
+			}
 		}
 		
+		//game state is in the instructions page
+		//transitions from the instructions page to the play page
 		if(MainMethod.gameState == FRAME.Instructions) {
 			if(mouseOver(tempx, tempy, 212, 175, 200, 40)) {
 				game.gameState = FRAME.Play;
+				//adds player
 				updater.addObjects(new Player(290,385,ID.Player,updater));
 			}
 		}
 		
+		//games state is in the game over (end) page
+		//transitions from the game over page to the play page or exits the frame
 		if(MainMethod.gameState == FRAME.End) {
 			if(mouseOver(tempx,tempy,285, 166, 115, 20)) {
+				//plays again
 				MainMethod.gameState = FRAME.Play;
+				
+				//re-adds player
 				updater.addObjects(new Player(290,385,ID.Player,updater));
+				
+				//clears the objects
+				//re-initializes the health, level, and score
 				updater.clear();
 				Header.HEALTH = 100;
 				Header.LEVEL = 1;
 				Header.SCORE = 0;
 			}
 			
+			//exits game - exit button
 			if(mouseOver(tempx,tempy, 275, 205, 115, 20)) {
 				System.exit(1);
 			}
@@ -59,10 +77,12 @@ public class Homepage extends MouseAdapter{
 		}
 	}
 	
+	//method that happens if the mouse if not clicked
 	public void mouseReleased(MouseEvent e) {
 		
 	}
 
+	//method that returns if the mouse is within a specific rectangle
 	private boolean mouseOver(int tempx, int tempy, int x, int y, int width, int height) {
 		if(tempx > x && tempx < x + width) {
 			if(tempy > y && tempy < y + height) {
@@ -79,9 +99,10 @@ public class Homepage extends MouseAdapter{
 		
 	}
 	
+	//method that changes the display for different game states
 	public void display(Graphics g) {
 		
-		//homepage
+		//homepage display
 		if (MainMethod.gameState == FRAME.Homepage) {
 			Font fnt = new Font("serif", 1, 40);
 			Font fnt2 = new Font("serif", 1, 30);
@@ -142,7 +163,7 @@ public class Homepage extends MouseAdapter{
 				}
 			}
 		
-		//instructions page
+		//instructions page display
 		} else if (MainMethod.gameState == FRAME.Instructions) {
 				Font fnt = new Font("serif", 1, 20);
 				Font fnt1 = new Font("serif", 1, 15);
@@ -207,7 +228,7 @@ public class Homepage extends MouseAdapter{
 					}
 				}
 				
-		//game over page 
+		//game over page display
 		} else if (MainMethod.gameState == FRAME.End) {
 				Font fnt = new Font("serif", 1, 40);
 				Font fnt2 = new Font("serif", 1, 30);
